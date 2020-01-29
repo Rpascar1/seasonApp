@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component{
-  constructor (props){
-    super(props);
+  // constructor (props){
+  //   super(props);
+  //
+  //   this.state = { lat: null, errorMessage: ''}
+  //
+  // }
 
-    this.state = { lat: null, errorMessage: ''}
 
-  }
+
+
+  state = { lat: null, errorMessage: ''}
+
 
   componentDidMount(){
 
@@ -22,11 +29,19 @@ class App extends React.Component{
         return <div> Error - location request denied. </div>
         }
       if (!this.state.errorMessage && this.state.lat){
-        return <div> Latitude: {this.state.lat}</div>
-        }
+        // return <div> Latitude: {this.state.lat}</div>
+        return <SeasonDisplay lat={this.state.lat}/>
+      } else {
 
-        return <div> Loading </div>
+        return (
 
+        <div class="ui segment">
+          <div class="ui active inverted dimmer">
+            <div class="ui text loader">Loading</div>
+          </div>
+        </div>
+      )
+    }
   }
 }
 ReactDOM.render(<App />, document.getElementById('root'));

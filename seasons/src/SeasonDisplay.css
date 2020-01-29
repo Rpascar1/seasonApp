@@ -1,0 +1,42 @@
+.spinning {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.icon-left {
+  position: absolute;
+  top: 10px;
+  left:10px;
+}
+
+.icon-right {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+
+ .season-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ }
+
+.winter {
+  background-color: #9fc5f2;
+}
+
+.summer {
+background-color: orangergb(190, 117, 30);
+
+}
