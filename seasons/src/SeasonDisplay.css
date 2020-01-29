@@ -37,6 +37,14 @@
 }
 
 .summer {
-background-color: orangergb(190, 117, 30);
+background-color: #be751e;
 
+}
+
+.season-display.winter i {
+  color: blue;
+}
+
+.season-display.summer i {
+  color: red;
 }

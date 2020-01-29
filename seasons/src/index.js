@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner'
 
 class App extends React.Component{
+
   // constructor (props){
   //   super(props);
   //
@@ -24,24 +26,30 @@ class App extends React.Component{
     )
   }
 
+  renderContent(){
+
+    if (this.state.errorMessage && !this.state.lat){
+      return <div> Error - location request denied. </div>
+      }
+    if (!this.state.errorMessage && this.state.lat){
+      // return <div> Latitude: {this.state.lat}</div>
+      return <SeasonDisplay lat={this.state.lat}/>
+    } else {
+
+      return <Spinner message="Please accept location request"/>
+
+  }
+
+
+  }
   render() {
-      if (this.state.errorMessage && !this.state.lat){
-        return <div> Error - location request denied. </div>
-        }
-      if (!this.state.errorMessage && this.state.lat){
-        // return <div> Latitude: {this.state.lat}</div>
-        return <SeasonDisplay lat={this.state.lat}/>
-      } else {
 
-        return (
+    return (
+      <div className="border red">
+        {this.renderContent()}
+      </div>
+    )
 
-        <div class="ui segment">
-          <div class="ui active inverted dimmer">
-            <div class="ui text loader">Loading</div>
-          </div>
-        </div>
-      )
-    }
   }
 }
 ReactDOM.render(<App />, document.getElementById('root'));
